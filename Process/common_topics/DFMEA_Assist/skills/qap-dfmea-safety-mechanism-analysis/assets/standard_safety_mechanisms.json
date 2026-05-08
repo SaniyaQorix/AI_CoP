@@ -1,0 +1,92 @@
+{
+  "safety_mechanisms": [
+    {
+      "id": "SM_01",
+      "description": "Null Checks",
+      "design_implementation_hints": [
+        "To prevent null-reference exceptions which may occur while trying to access or manipulate an object or reference that is null.",
+        "To prevent undefined behaviour by verifying the existence of an object or reference before using it."
+      ]
+    },
+    {
+      "id": "SM_02",
+      "description": "Range Checks",
+      "design_implementation_hints": [
+        "Range checks of input and output data.",
+        "Checks on permissible value ranges when entering a software function."
+      ]
+    },
+    {
+      "id": "SM_03",
+      "description": "Plausibility Checks",
+      "design_implementation_hints": [],
+      "examples": [
+        "Using a reference model of the desired behaviour.",
+        "Assertion checks, for example preconditions.",
+        "Comparing signals from different sources."
+      ]
+    },
+    {
+      "id": "SM_04",
+      "description": "State Validation",
+      "design_implementation_hints": [
+        "Verify that the system is in a valid state before performing specific operations.",
+        "Check that transitions between states are logical and allowed."
+      ]
+    },
+    {
+      "id": "SM_05",
+      "description": "Boundary Checks",
+      "design_implementation_hints": [
+        "Confirm that variables and calculations do not exceed predefined limits or boundaries.",
+        "Guard against integer overflows, buffer overflows, or other conditions that may lead to unpredictable behaviour."
+      ]
+    },
+    {
+      "id": "SM_06",
+      "description": "Timing Checks",
+      "design_implementation_hints": [
+        "Validate that timing constraints are met, especially in real-time systems.",
+        "Ensure that tasks or processes are executed within specified time intervals."
+      ]
+    },
+    {
+      "id": "SM_07",
+      "description": "Configuration Checks",
+      "design_implementation_hints": [
+        "Ensure that configuration settings are within acceptable ranges defined by AUTOSAR or user.",
+        "Validate that the configuration of system components is consistent within Qorix Adaptive."
+      ]
+    },
+    {
+      "id": "SM_08",
+      "description": "Communication Checks",
+      "design_implementation_hints": [
+        "Synchronization mechanism, for example mutex.",
+        "CRC mechanism."
+      ]
+    },
+    {
+      "id": "SM_09",
+      "description": "Stack Protection",
+      "design_implementation_hints": [
+        "Stack overflow or underflow check.",
+        "Stack canaries are checked before function return to make sure they have not been modified, for example as a result of a buffer overflow on stack allocated variables. Any modification to the stack canary on the stack will result in process abort."
+      ]
+    },
+    {
+      "id": "SM_10",
+      "description": "Monitoring of program execution",
+      "design_implementation_hints": [
+        "Monitoring of program execution by an external element such as an ASIC or another software element performing platform health watchdog monitoring."
+      ]
+    },
+    {
+      "id": "SM_11",
+      "description": "Access permission management for Crypto Key Slots & Service Interfaces",
+      "design_implementation_hints": [
+        "Granting or denying access to safety-related shared resources."
+      ]
+    }
+  ]
+}

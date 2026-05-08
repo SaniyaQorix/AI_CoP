@@ -1,0 +1,133 @@
+{
+  "hazop": {
+    "keywords": [
+      {
+        "keyword": "REVERSE",
+        "meaning": "Logical opposite of the design intent"
+      },
+      {
+        "keyword": "MORE / HIGHER",
+        "meaning": "Quantitative increase in a parameter"
+      },
+      {
+        "keyword": "LESS / LOWER",
+        "meaning": "Quantitative decrease in a parameter"
+      },
+      {
+        "keyword": "PART OF",
+        "meaning": "Only some of the design intent is achieved"
+      },
+      {
+        "keyword": "AS WELL AS",
+        "meaning": "An additional activity occurs"
+      },
+      {
+        "keyword": "LATE",
+        "meaning": "Relative to the clock time; synchronous function waiting for infinite time / async function delayed notification; deadlock and starvation"
+      },
+      {
+        "keyword": "EARLY",
+        "meaning": "Relative to the clock time"
+      },
+      {
+        "keyword": "BEFORE",
+        "meaning": "Relating to order or sequence"
+      },
+      {
+        "keyword": "AFTER",
+        "meaning": "Relating to order or sequence"
+      },
+      {
+        "keyword": "UNSTABLE",
+        "meaning": "State is unstable / under minable"
+      },
+      {
+        "keyword": "PERIODIC",
+        "meaning": "Changing in quantity or unstable; not following periodicity"
+      },
+      {
+        "keyword": "OTHER THAN",
+        "meaning": "Complete substitution; another activity takes place"
+      },
+      {
+        "keyword": "NO / NOT / NONE",
+        "meaning": "None of the design intent is achieved"
+      },
+      {
+        "keyword": "SEQUENCE",
+        "meaning": "Relative to data message transmission / execution sequence (e.g., DeInit called before Init)"
+      },
+      {
+        "keyword": "CORRUPT",
+        "meaning": "Relative to data value corruption"
+      },
+      {
+        "keyword": "OTHER",
+        "meaning": "When it cannot be mapped to any of the above"
+      }
+    ]
+  },
+  "dfi": {
+    "definitions": [
+      {
+        "identifier": "DFI_1",
+        "name": "Memory Interference",
+        "applicability": "All Modules",
+        "dfi": "Common code sharing data; protect against / detect unauthorized access (illegal writes) to ASIL data.",
+        "description": "If a module function/API/method is used in multiple execution contexts (threads), data corruption may occur. Such executions must be analyzed. Data may be inconsistent due to concurrency and re-entrancy. Data inconsistency may occur during context switching.",
+        "data_inconsistency_causes": [
+          "concurrency",
+          "re-entrancy"
+        ],
+        "failure_mode_examples": [
+          "Corruption of data in memory"
+        ],
+        "example_safety_mechanisms_measures": [
+          "Follow safety analysis and provide recommendation/restriction to the user",
+          "lock/unlock, mutex",
+          "Get/Set methods for atomic reads/writes",
+          "CRC mechanism",
+          "Memory protection (if available)",
+          "Double inversion storage"
+        ]
+      },
+      {
+        "identifier": "DFI_2",
+        "name": "Timing and Execution Interference",
+        "applicability": "All Modules",
+        "dfi": "Timing and execution interference.",
+        "description": "Timing and execution blocking/delay in higher ASIL application due to lower ASIL / QM application. Includes deadlocks and livelocks.",
+        "interference_types": [
+          "deadlocks",
+          "livelocks"
+        ],
+        "failure_mode_examples": [
+          "Higher ASIL application waiting for lower ASIL / QM application to complete their actions"
+        ],
+        "example_safety_mechanisms_measures": [
+          "Timeout mechanisms",
+          "Deadline supervision",
+          "Runtime profiling and setting appropriate priorities to processes/threads"
+        ]
+      },
+      {
+        "identifier": "DFI_3",
+        "name": "Exchange of Information",
+        "applicability": "Only Safety Critical Modules",
+        "dfi": "Applicable for safety critical communication between components.",
+        "description": "Applicable for safety critical communication between (a) ARA component and daemon of a functional cluster and (b) two functional clusters (e.g., STM-EXM, PHM-STM). Failure modes include repetition, loss, delay, or corruption of information.",
+        "failure_mode_examples": [
+          "Repetition of information",
+          "Loss of information",
+          "Delay of information",
+          "Corruption of information"
+        ],
+        "example_safety_mechanisms_measures": [
+          "E2E mechanism with suitable profile",
+          "CRC checks for data corruption",
+          "Distinction between on-board and off-board communications (co-located vs remote)"
+        ]
+      }
+    ]
+  }
+}
